@@ -7,8 +7,6 @@ VRCHAT_PHOTO_DIR = ENV["PHOTO_DIR_PASS"]
 
 targetchannel = "bot_testingfield"
 
-imgfiles = Dir.glob("#{VRCHAT_PHOTO_DIR}/*.png")
-
 def post_photo(botobj, targetch, imagepath, caption)
     botobj.send_file(targetch, File.open(imagepath, 'r'), caption: caption)
 end
