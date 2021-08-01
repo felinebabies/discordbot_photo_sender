@@ -5,7 +5,7 @@ Dotenv.load
 
 VRCHAT_PHOTO_DIR = ENV["PHOTO_DIR_PASS"]
 
-targetchannel = "vrchat_photo"
+targetchannel = ENV["DISCORD_CHANNEL_NAME"] || "vrchat_photo"
 
 def post_photo(botobj, targetch, imagepath, caption)
     botobj.send_file(targetch, File.open(imagepath, 'r'), caption: caption)
