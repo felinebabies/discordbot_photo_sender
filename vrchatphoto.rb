@@ -5,7 +5,7 @@ Dotenv.load
 
 VRCHAT_PHOTO_DIR = ENV["PHOTO_DIR_PASS"]
 
-targetchannel = "bot_testingfield"
+targetchannel = "vrchat_photo"
 
 def post_photo(botobj, targetch, imagepath, caption)
     botobj.send_file(targetch, File.open(imagepath, 'r'), caption: caption)
@@ -35,4 +35,5 @@ if ch_id != nil then
     sleep
 end
 
+bot.sync
 bot.stop
