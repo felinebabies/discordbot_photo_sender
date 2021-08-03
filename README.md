@@ -8,10 +8,19 @@ Ruby2.5.1での動作を確認済み。
 bundlerをインストール済みであること。
 bundlerが無い場合
 
-    gem install bundler
+    sudo gem install bundler
 
 当スクリプトが存在するディレクトリで、必須gemのインストールを行う。
 
+※ruby native extensionの設定を行ったことが無い場合、別途ライブラリやソフトウェアのインストールが必要となる場合があります。
+
+Ubuntuの場合のruby native extension用パッケージインストール例
+
+    sudo apt-get install ruby-dev make gcc build-essential libreadline-dev zlib1g-dev
+
+bundleで必要なgemをセットアップする
+
+    bundle config set --local path 'vendor/bundle'
     bundle install
   
 付属のsample.envをコピーし、.envファイルを作成する。
