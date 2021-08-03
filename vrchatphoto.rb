@@ -25,7 +25,7 @@ bot.run :async
 ch_id = bot.find_channel(targetchannel).first.id
 
 if ch_id != nil then
-    listener = Listen.to(VRCHAT_PHOTO_DIR) do |modified, added, removed|
+    listener = Listen.to(VRCHAT_PHOTO_DIR, force_polling: true) do |modified, added, removed|
         added.each do |additem|
             post_photo(bot, ch_id, additem, File.basename(additem))
             puts "画像を投稿しました：#{additem}"
