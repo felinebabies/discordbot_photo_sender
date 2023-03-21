@@ -12,12 +12,7 @@ def post_photo(botobj, targetch, imagepath, caption)
 end
 
 # Discord botを初期化
-bot = Discordrb::Bot.new (
-    {
-        :token => ENV["DISCORD_TOKEN"],
-        :client_id => ENV["DISCORD_CLIENT_ID"]
-    }
-)
+bot = Discordrb::Bot.new(token: ENV["DISCORD_TOKEN"], client_id: ENV["DISCORD_CLIENT_ID"])
 
 bot.run :async
 
