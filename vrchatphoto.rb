@@ -32,6 +32,11 @@ target_channel = find_channel_by_name(bot, targetchannel)
 # チャンネルが取得できた場合
 if target_channel != nil then
     ch_id = target_channel.id
+else
+    # エラーメッセージを表示してプログラムを終了
+    puts "指定されたチャンネル名'#{targetchannel}'が見つかりませんでした。環境変数を確認してください。"
+    bot.stop
+    exit
 end
 
 if ch_id != nil then
