@@ -11,13 +11,28 @@ def post_photo(botobj, targetch, imagepath, caption)
     botobj.send_file(targetch, File.open(imagepath, 'r'), caption: caption)
 end
 
+# チャンネル名が一致するチャンネルを検索する関数
+def find_channel_by_name(bot, channel_name)
+    bot.servers.each_value do |server|
+      server.channels.each do |channel|
+        return channel if channel.name == channel_name
+      end
+    end
+    nil
+end
+
 # Discord botを初期化
 bot = Discordrb::Bot.new(token: ENV["DISCORD_TOKEN"], client_id: ENV["DISCORD_CLIENT_ID"])
 
 bot.run :async
 
 # チャンネル情報を取得
-ch_id = bot.find_channel(targetchannel).first.id
+target_channel = find_channel_by_name(bot, targetchannel)
+
+# チャンネルが取得できた場合
+if target_channel != nil then
+    ch_id = target_channel.id
+end
 
 if ch_id != nil then
     listener = Listen.to(VRCHAT_PHOTO_DIR, force_polling: true) do |modified, added, removed|
